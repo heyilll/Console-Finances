@@ -94,16 +94,16 @@ function round(i) {
 
 var totMon = finances.length;
 var tot= 0;
-var mean = finances[0][1]; 
+var mean = 0; 
 var gp = [0,0];
 var gd = [0,0];
 var chg = 0;
 
 for (let i = 0; i < totMon; i++) {
-    tot = tot + finances[i][1];
+    tot = tot + parseInt(finances[i][1]);
 
     if (i > 0) {
-        chg = finances[i][1] - finances[i - 1][1];
+        chg = finances[i][1] - finances[i-1][1];
         mean = mean + chg;
 
         if (chg >= 0) {
@@ -120,10 +120,10 @@ for (let i = 0; i < totMon; i++) {
     }
 }
 
-mean = round(mean/totMon);
+mean = round(mean/(totMon - 1));
 
 console.log(`Financial Analysis: 
-Toal Months: ${totMon}, 
+Total Months: ${totMon}, 
 Net Total : ${tot}, 
 Average Profit/Loss: ${mean}, 
 Greatest Increase: ${gp[1]}, ${finances[gp[0]][0]}, 
